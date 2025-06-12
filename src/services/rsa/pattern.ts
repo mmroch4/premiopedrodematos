@@ -1,14 +1,14 @@
 export const PATTERN = {
-  '0': 1,
-  '1': 2,
-  '2': 3,
-  '3': 4,
-  '4': 5,
-  '5': 6,
-  '6': 7,
-  '7': 8,
-  '8': 9,
-  '9': 10,
+  0: 1,
+  1: 2,
+  2: 3,
+  3: 4,
+  4: 5,
+  5: 6,
+  6: 7,
+  7: 8,
+  8: 9,
+  9: 10,
   A: 11,
   B: 12,
   C: 13,
@@ -35,10 +35,8 @@ export const PATTERN = {
   X: 34,
   Y: 35,
   Z: 36,
-  ' ': 37,
+  " ": 37,
   "%": 38,
+  ".": 39,
+  "-": 40,
 } as const;
-
-export function convertToPattern(char: string): number {
-  return PATTERN[char as keyof typeof PATTERN];
-}

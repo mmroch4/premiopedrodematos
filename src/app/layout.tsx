@@ -1,17 +1,12 @@
+import { ubuntu } from "@/fonts/ubuntu";
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import { cn } from "@/utils/cn";
 import type { Metadata } from "next";
-import { Ubuntu } from "next/font/google";
 import "./globals.css";
-
-const ubuntu = Ubuntu({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-});
+import { metadata as m } from "./metadata";
 
 export const metadata: Metadata = {
-  title: "MUDAR",
-  description: "MUDAR",
+  ...m,
 };
 
 export default function RootLayout({
@@ -23,7 +18,7 @@ export default function RootLayout({
     <html lang="pt">
       <body
         className={cn(
-          "min-h-screen scroll-smooth antialiased",
+          "min-h-screen scroll-smooth bg-slate-50 text-slate-900 antialiased",
           ubuntu.className,
         )}
       >

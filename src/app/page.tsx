@@ -1,37 +1,56 @@
-import { InfoIcon } from "lucide-react";
+import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
+import { BowArrowIcon, InfoIcon } from "lucide-react";
 import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="home-grid grid min-h-screen p-4">
-      <main className="flex flex-col items-center justify-center space-y-8 text-center">
-        <div className="flex flex-wrap items-center justify-center gap-4">
+    <div className="default-grid">
+      <Navigation />
+
+      <main className="flex flex-col items-center justify-center gap-12 px-6">
+        <header>
+          <div className="mb-6 flex items-center justify-center">
+            <div className="mr-2 flex-shrink-0">
+              <img
+                src="/images/logo.svg"
+                alt="Shh... • Prémio Pedro de Matos"
+                className="mr-2 size-[4.5rem] sm:mr-4 sm:size-24"
+              />
+            </div>
+
+            <h1 className="text-5xl font-medium sm:text-7xl">Shh...</h1>
+          </div>
+
+          <p className="text-center text-lg text-slate-800">
+            Se não gostas de enigmas,{" "}
+            <Link
+              href="/jogar"
+              className="font-bold uppercase text-slate-950 underline decoration-amber-400 decoration-2"
+            >
+              não jogues!
+            </Link>
+          </p>
+        </header>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6">
           <Link
             href="/jogar"
-            className="rounded bg-blue-500 px-10 py-3 text-lg font-bold uppercase tracking-wide text-white hover:bg-blue-600"
+            className="flex items-center justify-center rounded bg-amber-500 px-6 py-3 font-bold uppercase tracking-wide text-white hover:bg-amber-600 sm:text-lg"
           >
-            Jogar
+            <BowArrowIcon className="mr-2 size-5 sm:size-6" /> Jogar
+          </Link>
+
+          <Link
+            href="/sobre"
+            className="flex flex-wrap items-center justify-center gap-2 rounded text-center tracking-wide hover:underline"
+          >
+            <InfoIcon className="size-4" /> Saiba mais sobre o projeto
           </Link>
         </div>
-        <Link
-          href="/sobre"
-          className="flex items-center justify-center rounded px-4 py-3 tracking-wide flex-wrap hover:bg-slate-200"
-        >
-          <InfoIcon className="mr-2 size-4" /> Saiba mais sobre o projeto
-        </Link>
       </main>
-      <footer className="flex items-center justify-center py-12 text-center">
-        <p className="flex flex-wrap items-center justify-center gap-1">
-          Feito por{" "}
-          <a
-            href="https://www.miguelrocha.dev/pt"
-            target="_blank"
-            className="underline hover:text-blue-500"
-          >
-            Miguel Rocha
-          </a>
-        </p>
-      </footer>
+
+      <Footer />
     </div>
   );
 }

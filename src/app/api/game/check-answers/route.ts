@@ -11,8 +11,7 @@ export async function POST(request: Request) {
 
     const { history, answers } = body;
 
-    let [story_index_raw, alternatives_index_raw] = history.split(":");
-
+    const [story_index_raw, alternatives_index_raw] = history.split(":");
     const story_index = Number(story_index_raw);
     const alternatives_index = alternatives_index_raw.split("").map((alt) => {
       return Number(alt);
@@ -43,6 +42,8 @@ export async function POST(request: Request) {
       verdict,
     });
   } catch (err) {
+    console.error("ERROR CHECK ANSWERS: ", err);
+
     return Response.json({
       all_right: false,
       counter: 0,

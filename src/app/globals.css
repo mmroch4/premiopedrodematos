@@ -2,16 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-.home-grid {
+.default-grid {
+  @apply grid min-h-screen;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content 1fr max-content;
+}
+
+.not-found-grid {
+  @apply grid min-h-screen;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr max-content;
 }
 
-.about-grid {
+.default-grid {
+  @apply grid min-h-screen;
   grid-template-columns: 1fr;
   grid-template-rows: max-content 1fr max-content;
 }
 
 .label {
-  @apply uppercase font-medium bg-amber-300 px-2 py-1 rounded text-sm;
+  @apply rounded px-2 py-1 text-sm font-medium uppercase;
+}
+
+.label-unsolved {
+  @apply bg-amber-300;
+}
+
+.label-solved {
+  @apply bg-green-300;
 }
