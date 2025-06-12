@@ -54,7 +54,7 @@ const defaultFormValues: FormValues = {
 };
 
 export function useVerifyAnswersForm(history: string) {
-  const { register, handleSubmit, setValue } = useForm<FormValues>({
+  const { register, handleSubmit, setValue, formState } = useForm<FormValues>({
     reValidateMode: "onSubmit",
     resolver: zodResolver(formSchema),
     defaultValues: defaultFormValues,
@@ -101,5 +101,5 @@ export function useVerifyAnswersForm(history: string) {
     setRightAnswers(JSON.stringify(answersToPersist));
   });
 
-  return { register, onSubmit, verification };
+  return { register, onSubmit, verification, formState };
 }

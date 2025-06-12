@@ -1,4 +1,7 @@
-import { DefaultRightAnswersKeys, useRightAnswersLocalStorage } from "@/hooks/use-right-answers-local-storage";
+import {
+  DefaultRightAnswersKeys,
+  useRightAnswersLocalStorage,
+} from "@/hooks/use-right-answers-local-storage";
 import { useVerifyAnswersForm } from "@/hooks/use-verify-answers-form";
 import { cn } from "@/utils/cn";
 import { CheckIcon } from "lucide-react";
@@ -8,18 +11,43 @@ interface AnswersProps {
 }
 
 export function Answers({ history }: AnswersProps) {
-  const { register, onSubmit, verification } = useVerifyAnswersForm(history);
+  const { register, onSubmit, verification, formState } =
+    useVerifyAnswersForm(history);
   const { parseRightAnswers } = useRightAnswersLocalStorage();
+
+  const messages = (history.split(":")[1] as string).split("");
+
+  const { isSubmitting } = formState;
 
   return (
     <section className="mx-auto w-full max-w-screen-lg py-4">
-      <h1 className="mb-3 text-xl font-bold">Respostas</h1>
+      <div className="mb-4 flex flex-wrap justify-between gap-4">
+        <div>
+          <h1 className="mb-3 text-xl font-bold">Respostas</h1>
 
-      <p className="mb-4 text-slate-800">Quando acertares uma resposta, aparecerá um sinal de certo.</p>
+          <p className="text-slate-800">
+            Quando acertares uma resposta, aparecerá um sinal de certo.
+          </p>
+        </div>
 
-      <form onSubmit={onSubmit}>
+        <div>
+          <button
+            type="submit"
+            form="check-answers"
+            className={cn(
+              "cursor-pointer rounded bg-slate-200 px-4 py-3 hover:bg-slate-300",
+              isSubmitting ? "cursor-not-allowed opacity-50" : "",
+            )}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Verificando..." : "Verificar"}
+          </button>
+        </div>
+      </div>
+
+      <form id="check-answers" onSubmit={onSubmit}>
         <div className="flex flex-col divide-y-2">
-          {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((_, i) => {
+          {messages.map((_, i) => {
             const u = String(i) as DefaultRightAnswersKeys;
 
             const isRight =
@@ -41,12 +69,12 @@ export function Answers({ history }: AnswersProps) {
                     type="text"
                     {...register(`${u}`)}
                     className={cn(
-                      "rounded border px-3 py-2 bg-slate-50",
+                      "rounded border bg-slate-50 px-3 py-2",
                       isRight
                         ? "border-green-400 bg-green-100 text-green-950"
                         : "",
                     )}
-                    disabled={isRight}
+                    disabled={isRight || isSubmitting}
                   />
 
                   {isRight && (
@@ -60,9 +88,13 @@ export function Answers({ history }: AnswersProps) {
 
         <button
           type="submit"
-          className="cursor-pointer rounded bg-slate-200 px-4 py-3 hover:bg-slate-300"
+          disabled={isSubmitting}
+          className={cn(
+            "cursor-pointer rounded bg-slate-200 px-4 py-3 hover:bg-slate-300",
+            isSubmitting ? "cursor-not-allowed opacity-50" : "",
+          )}
         >
-          Verificar
+          {isSubmitting ? "Verificando..." : "Verificar"}
         </button>
       </form>
     </section>

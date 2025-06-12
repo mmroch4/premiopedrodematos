@@ -17,8 +17,10 @@ export function useGame() {
 
   const { resetRightAnswers } = useRightAnswersLocalStorage();
 
-  const { isPending: isCreating, data: generatedGame } =
-    useGenerateGame(isEnabledToFetch);
+  const {
+    isFetching: isCreating,
+    data: generatedGame,
+  } = useGenerateGame(isEnabledToFetch);
 
   function startGame() {
     setIsEnabledToFetch(true);
@@ -26,10 +28,10 @@ export function useGame() {
 
   function stopGame() {
     resetIsPlaying();
-    resetGame();
-    resetRightAnswers();
     setIsEnabledToFetch(false);
     queryClient.invalidateQueries({ queryKey: ["GAME"] });
+    resetGame();
+    resetRightAnswers();
   }
 
   useEffect(() => {
@@ -50,6 +52,7 @@ export function useGame() {
   ]);
 
   return {
+    isCreating,
     game: generatedGame || parseGame(),
     isPlaying,
     startGame,

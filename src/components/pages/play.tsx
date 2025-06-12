@@ -23,9 +23,9 @@ function Wrapper({ children }: { children: React.ReactNode }) {
 export function PlayPage() {
   const isClient = useIsClient();
 
-  const { isPlaying, startGame, stopGame, game } = useGame();
+  const { isPlaying, startGame, stopGame, game, isCreating } = useGame();
 
-  if (!isClient) {
+  if (!isClient || isCreating) {
     return (
       <Wrapper>
         <main className="flex flex-col items-center justify-center px-6">
