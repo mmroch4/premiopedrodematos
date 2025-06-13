@@ -92,7 +92,7 @@ export default function GuidePage() {
                 </p>
 
                 <code className="mt-2 block w-fit rounded-md border bg-slate-100 px-3 py-2 font-bold">
-                  d ≡ e⁻¹ (mod φ(n))
+                  d ≡ 1/e (mod φ(n))
                 </code>
               </div>
             </li>
@@ -108,7 +108,7 @@ export default function GuidePage() {
                 </p>
 
                 <code className="mt-2 block w-fit rounded-md border bg-slate-100 px-3 py-2 font-bold">
-                  m = cᵈ mod n
+                  m = c^d mod n
                 </code>
 
                 <p className="mt-2 text-slate-800">
