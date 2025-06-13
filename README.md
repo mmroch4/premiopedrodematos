@@ -21,8 +21,15 @@ Certifique-se de que tem o **Node.js** instalado para rodar o projeto localmente
 # Instalar dependências
 npm install
 
-# Criar o arquivo .env e definir a variável de ambiente:
-NEXT_PUBLIC_BASE_URL=https://o-seu-url-aqui.dev
+# URL base do site
+NEXT_PUBLIC_BASE_URL=http://localhost:3000 (Exemplo)
+
+# Chave secreta para autenticação JWT
+JWT_SECRET=sua_chave_secreta_aqui (Exemplo)
+
+# Credenciais da base de dados Xata
+XATA_API_KEY=sua_api_key_do_xata (Exemplo)
+XATA_BRANCH=nome_da_sua_branch (Exemplo)
 
 # Rodar o servidor de desenvolvimento
 npm run dev

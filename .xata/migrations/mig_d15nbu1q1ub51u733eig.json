@@ -1,0 +1,20 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d15nbu1q1ub51u733eig",
+    "operations": [
+      {
+        "drop_column": {
+          "down": "0",
+          "table": "leaderboard",
+          "column": "time_period"
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d15nbu1q1ub51u733eig",
+  "parent": "mig_d15nboicdvp84ne559ug",
+  "schema": "public",
+  "startedAt": "2025-06-13T00:51:04.932223Z"
+}

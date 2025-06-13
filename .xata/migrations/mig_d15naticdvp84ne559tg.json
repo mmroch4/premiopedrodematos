@@ -1,0 +1,24 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d15naticdvp84ne559tg",
+    "operations": [
+      {
+        "add_column": {
+          "up": "0",
+          "table": "leaderboard",
+          "column": {
+            "name": "time_period",
+            "type": "int",
+            "comment": ""
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d15naticdvp84ne559tg",
+  "parent": "mig_d15mv1pq1ub51u733efg",
+  "schema": "public",
+  "startedAt": "2025-06-13T00:48:55.05926Z"
+}

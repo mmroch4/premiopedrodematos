@@ -53,7 +53,15 @@ const defaultFormValues: FormValues = {
   "11": "",
 };
 
-export function useVerifyAnswersForm(history: string) {
+export function useVerifyAnswersForm({
+  history,
+  startedAt,
+  gameId,
+}: {
+  history: string;
+  startedAt: string;
+  gameId: string;
+}) {
   const { register, handleSubmit, setValue, formState } = useForm<FormValues>({
     reValidateMode: "onSubmit",
     resolver: zodResolver(formSchema),
@@ -86,7 +94,12 @@ export function useVerifyAnswersForm(history: string) {
       given_answers.push(data[key as keyof typeof data]);
     }
 
-    const result = await verify({ history, answers: given_answers });
+    const result = await verify({
+      history,
+      startedAt,
+      gameId,
+      answers: given_answers,
+    });
 
     const answersToPersist: { [key: string]: string | boolean } =
       defaultRightAnswers;

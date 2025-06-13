@@ -8,11 +8,16 @@ import { CheckIcon } from "lucide-react";
 
 interface AnswersProps {
   history: string;
+  startedAt: string;
+  gameId: string;
 }
 
-export function Answers({ history }: AnswersProps) {
-  const { register, onSubmit, verification, formState } =
-    useVerifyAnswersForm(history);
+export function Answers({ history, gameId, startedAt }: AnswersProps) {
+  const { register, onSubmit, verification, formState } = useVerifyAnswersForm({
+    history,
+    gameId,
+    startedAt,
+  });
   const { parseRightAnswers } = useRightAnswersLocalStorage();
 
   const messages = (history.split(":")[1] as string).split("");

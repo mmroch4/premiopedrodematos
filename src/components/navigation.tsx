@@ -8,6 +8,7 @@ import {
   InfoIcon,
   MenuIcon,
   ScrollTextIcon,
+  TrophyIcon,
   University,
   XIcon,
 } from "lucide-react";
@@ -97,6 +98,16 @@ export function Navigation() {
                       </li>
                       <li>
                         <Link
+                          href="/ranking"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="-ml-3 flex items-center rounded-lg px-3 py-2 text-lg hover:bg-slate-100"
+                        >
+                          <TrophyIcon className="mr-3 size-5 flex-shrink-0" />
+                          Ranking
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
                           href="/guia"
                           onClick={() => setMobileMenuOpen(false)}
                           className="-ml-3 flex items-center rounded-lg px-3 py-2 text-lg hover:bg-slate-100"
@@ -179,7 +190,7 @@ export function Navigation() {
           </DialogPanel>
         </Dialog>
 
-        <div className="hidden flex-wrap items-center gap-6 md:flex">
+        <div className="hidden flex-wrap items-center gap-4 md:flex">
           <ul className="flex flex-wrap items-center gap-6">
             <li>
               <Link
@@ -188,6 +199,15 @@ export function Navigation() {
               >
                 <BowArrowIcon className="mr-2 size-4 flex-shrink-0" />
                 Jogar
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/ranking"
+                className="flex items-center justify-center hover:underline"
+              >
+                <TrophyIcon className="mr-2 size-4 flex-shrink-0" />
+                Ranking
               </Link>
             </li>
             <li>

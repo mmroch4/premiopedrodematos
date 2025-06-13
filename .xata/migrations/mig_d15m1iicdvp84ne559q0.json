@@ -1,0 +1,24 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d15m1iicdvp84ne559q0",
+    "operations": [
+      {
+        "add_column": {
+          "up": "0",
+          "table": "leaderboard",
+          "column": {
+            "name": "points",
+            "type": "int",
+            "comment": ""
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d15m1iicdvp84ne559q0",
+  "parent": "mig_d15m1bjs1m1ktirm1scg",
+  "schema": "public",
+  "startedAt": "2025-06-12T23:20:43.492094Z"
+}

@@ -1,8 +1,12 @@
 import data from "@/data";
 import { RSA } from "@/services/rsa";
 import { getRandomNumber } from "@/utils/get-random-number";
+import { createId } from "@paralleldrive/cuid2";
+import jwt from "jsonwebtoken";
 
 const ALTERNATIVES_COUNT = data.alternatives;
+
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
 export async function GET() {
   const story_index = getRandomNumber(0, data.stories.length - 1);
@@ -27,6 +31,13 @@ export async function GET() {
     });
   });
 
+  const gameId = createId();
+  const startedAt = String(Date.now());
+
+  const gameIdToken = jwt.sign(gameId, JWT_SECRET);
+
+  const startedAtToken = jwt.sign(startedAt, JWT_SECRET);
+
   return Response.json({
     story: {
       history,
@@ -35,6 +46,8 @@ export async function GET() {
       count: story.count,
       html: story.text,
       encrypted_prompts,
+      gameId: gameIdToken,
+      startedAt: startedAtToken,
     },
   });
 }

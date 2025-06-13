@@ -19,6 +19,8 @@ interface GameInterfaceProps {
     count: number;
     html: string;
     encrypted_prompts: string[][];
+    gameId: string;
+    startedAt: string;
   };
 }
 
@@ -54,7 +56,36 @@ export function GameInterface({ stopGame, game }: GameInterfaceProps) {
   return (
     <main className="flex flex-col items-center py-8">
       <div className="w-full px-6 pb-4">
-        <div className="mx-auto flex w-full max-w-screen-lg items-center justify-between gap-4">
+        <div className="space-y-3 sm:hidden">
+          <div>
+            <button
+              onClick={stopGame}
+              className="flex items-center justify-center rounded-md border border-red-200 px-3 py-2 hover:bg-red-50"
+            >
+              <XIcon className="mr-2 size-4 flex-shrink-0 text-red-500" />
+              Terminar jogo
+            </button>
+          </div>
+
+          <div className="flex w-fit items-center justify-center px-3 py-2">
+            <CheckIcon className="mr-2 size-4 flex-shrink-0 text-green-500" />
+            <p>
+              Respostas certas: <span>{getRightAnswersCount()}</span>
+            </p>
+          </div>
+
+          <div className="px-3 py-2">
+            <Link
+              href="/guia"
+              className="flex w-fit items-center justify-center hover:underline"
+            >
+              <ScrollTextIcon className="mr-2 size-4 flex-shrink-0" />
+              Como jogar?
+            </Link>
+          </div>
+        </div>
+
+        <div className="mx-auto hidden w-full max-w-screen-lg flex-wrap items-center justify-between gap-4 sm:flex">
           <div className="flex-1">
             <button
               onClick={stopGame}
@@ -66,7 +97,7 @@ export function GameInterface({ stopGame, game }: GameInterfaceProps) {
           </div>
 
           <div className="flex flex-1 items-center justify-center">
-            <CheckIcon className="mr-2 size-4 text-green-500" />
+            <CheckIcon className="mr-2 size-4 flex-shrink-0 text-green-500" />
             <p>
               Respostas certas: <span>{getRightAnswersCount()}</span>
             </p>
@@ -115,7 +146,11 @@ export function GameInterface({ stopGame, game }: GameInterfaceProps) {
         ) : sectionId === 1 ? (
           <Prompts encrypted_prompts={game.encrypted_prompts} />
         ) : sectionId === 2 ? (
-          <Answers history={game.history} />
+          <Answers
+            history={game.history}
+            gameId={game.gameId}
+            startedAt={game.startedAt}
+          />
         ) : (
           <Information e={game.e} n={game.n} />
         )}

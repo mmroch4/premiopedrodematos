@@ -1,15 +1,23 @@
 import data from "@/data";
+import { xata } from "@/services/xata";
+import jwt from "jsonwebtoken";
 
 type Body = {
   history: string;
   answers: string[];
+  startedAt: string;
+  gameId: string;
 };
+
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Body;
 
-    const { history, answers } = body;
+    const { history, answers, gameId, startedAt } = body;
+
+    console.log(gameId, startedAt);
 
     const [story_index_raw, alternatives_index_raw] = history.split(":");
     const story_index = Number(story_index_raw);
@@ -34,6 +42,22 @@ export async function POST(request: Request) {
         verdict.push(false);
         all_right = false;
       }
+    }
+
+    if (counter >= 1) {
+      const decodedGameId = jwt.verify(gameId, JWT_SECRET) as string;
+      const decodedStartAt = jwt.verify(startedAt, JWT_SECRET) as string;
+
+      const now = Date.now();
+      const period = String(Math.floor((now - Number(decodedStartAt)) / 1000));
+
+      await xata.db.leaderboard.createOrUpdate({
+        game_id: decodedGameId,
+        started_at: decodedStartAt,
+        points: counter,
+        submitted_at: String(now),
+        period,
+      });
     }
 
     return Response.json({

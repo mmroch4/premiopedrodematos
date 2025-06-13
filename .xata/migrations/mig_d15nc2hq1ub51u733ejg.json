@@ -1,0 +1,22 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d15nc2hq1ub51u733ejg",
+    "operations": [
+      {
+        "alter_column": {
+          "up": "(SELECT CASE WHEN \"period\" IS NULL THEN '' ELSE \"period\" END)",
+          "down": "(SELECT CASE WHEN \"period\" IS NULL THEN '' ELSE \"period\" END)",
+          "table": "leaderboard",
+          "column": "period",
+          "nullable": false
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d15nc2hq1ub51u733ejg",
+  "parent": "mig_d15nbu1q1ub51u733eig",
+  "schema": "public",
+  "startedAt": "2025-06-13T00:51:23.089025Z"
+}

@@ -1,9 +1,11 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { useGameIdLocalStorage } from "./use-game-id-local-storage";
 import { useGameLocalStorage } from "./use-game-local-storage";
 import { useGenerateGame } from "./use-generate-game";
 import { useIsPlayingLocalStorage } from "./use-is-playing-local-storage";
 import { useRightAnswersLocalStorage } from "./use-right-answers-local-storage";
+import { useStartedAtLocalStorage } from "./use-started-at-local-storage";
 
 export function useGame() {
   const queryClient = useQueryClient();
@@ -17,10 +19,12 @@ export function useGame() {
 
   const { resetRightAnswers } = useRightAnswersLocalStorage();
 
-  const {
-    isFetching: isCreating,
-    data: generatedGame,
-  } = useGenerateGame(isEnabledToFetch);
+  const { resetStartedAt, setStartedAt } = useStartedAtLocalStorage();
+
+  const { resetGameId, setGameId } = useGameIdLocalStorage();
+
+  const { isFetching: isCreating, data: generatedGame } =
+    useGenerateGame(isEnabledToFetch);
 
   function startGame() {
     setIsEnabledToFetch(true);
@@ -32,6 +36,8 @@ export function useGame() {
     queryClient.invalidateQueries({ queryKey: ["GAME"] });
     resetGame();
     resetRightAnswers();
+    resetGameId();
+    resetStartedAt();
   }
 
   useEffect(() => {
@@ -40,6 +46,8 @@ export function useGame() {
       setIsPlaying(true);
       setGame(JSON.stringify(generatedGame));
       resetRightAnswers();
+      setGameId(generatedGame!.gameId || "");
+      setStartedAt(generatedGame!.startedAt || "");
     }
   }, [
     isEnabledToFetch,
@@ -49,6 +57,8 @@ export function useGame() {
     setGame,
     generatedGame,
     resetRightAnswers,
+    setGameId,
+    setStartedAt,
   ]);
 
   return {

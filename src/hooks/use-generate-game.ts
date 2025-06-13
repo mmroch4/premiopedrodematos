@@ -10,6 +10,8 @@ type Body = {
     count: number;
     html: string;
     encrypted_prompts: string[][];
+    gameId: string;
+    startedAt: string;
   };
 };
 

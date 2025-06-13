@@ -1,0 +1,25 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d15m1o3s1m1ktirm1sdg",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "leaderboard",
+          "column": {
+            "name": "game_id",
+            "type": "text",
+            "unique": true,
+            "comment": ""
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d15m1o3s1m1ktirm1sdg",
+  "parent": "mig_d15m1iicdvp84ne559q0",
+  "schema": "public",
+  "startedAt": "2025-06-12T23:21:05.807367Z"
+}
