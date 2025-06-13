@@ -32,6 +32,7 @@ export async function GET() {
   });
 
   const gameId = createId();
+
   const startedAt = String(Date.now());
 
   const gameIdToken = jwt.sign(gameId, JWT_SECRET);

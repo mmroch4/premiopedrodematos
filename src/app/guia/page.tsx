@@ -63,9 +63,21 @@ export default function GuidePage() {
                   <code className="font-bold">q</code> tal que:
                 </p>
 
-                <code className="mt-2 block w-fit rounded-md border bg-slate-100 px-3 py-2 font-bold">
+                <code className="my-2 block w-fit rounded-md border bg-slate-100 px-3 py-2 font-bold">
                   n = p × q
                 </code>
+
+                <p>
+                  💡 Dica:{" "}
+                  <a
+                    href="https://factordb.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-amber-500"
+                  >
+                    factordb.com
+                  </a>
+                </p>
               </div>
             </li>
 
@@ -111,10 +123,22 @@ export default function GuidePage() {
                   m = cᵈ mod n
                 </code>
 
-                <p className="mt-2 text-slate-800">
+                <p className="my-2 text-slate-800">
                   <code className="font-bold">m</code> será a forma numérica da
                   letra. Use a tabela de correspondência para converter o número
                   em letra.
+                </p>
+
+                <p className="mt-2 text-slate-800">
+                  Use este site com muita sabedoria 👀:{" "}
+                  <a
+                    href="https://www.dcode.fr/rsa-cipher"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-amber-500"
+                  >
+                    dcode.fr/rsa-cipher
+                  </a>
                 </p>
               </div>
             </li>

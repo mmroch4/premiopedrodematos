@@ -17,8 +17,6 @@ export async function POST(request: Request) {
 
     const { history, answers, gameId, startedAt } = body;
 
-    console.log(gameId, startedAt);
-
     const [story_index_raw, alternatives_index_raw] = history.split(":");
     const story_index = Number(story_index_raw);
     const alternatives_index = alternatives_index_raw.split("").map((alt) => {
@@ -51,13 +49,22 @@ export async function POST(request: Request) {
       const now = Date.now();
       const period = String(Math.floor((now - Number(decodedStartAt)) / 1000));
 
-      await xata.db.leaderboard.createOrUpdate({
-        game_id: decodedGameId,
-        started_at: decodedStartAt,
-        points: counter,
-        submitted_at: String(now),
-        period,
-      });
+      const record = await xata.db.leaderboard.read(decodedGameId);
+
+      if (!!record) {
+        await xata.db.leaderboard.update(decodedGameId, {
+          points: counter,
+          submitted_at: String(now),
+          period,
+        });
+      } else {
+        await xata.db.leaderboard.create(decodedGameId, {
+          points: counter,
+          submitted_at: String(now),
+          period,
+          started_at: decodedStartAt,
+        });
+      }
     }
 
     return Response.json({

@@ -23,20 +23,8 @@ const tables = [
         name: "_pgroll_new_leaderboard_xata_id_key",
         columns: ["xata_id"],
       },
-      leaderboard__pgroll_new_game_id_key: {
-        name: "leaderboard__pgroll_new_game_id_key",
-        columns: ["game_id"],
-      },
     },
     columns: [
-      {
-        name: "game_id",
-        type: "text",
-        notNull: true,
-        unique: true,
-        defaultValue: null,
-        comment: "",
-      },
       {
         name: "period",
         type: "text",
