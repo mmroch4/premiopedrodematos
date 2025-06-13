@@ -48,7 +48,6 @@ export function PlayPage() {
   }
 
   if (isPlaying) {
-    console.log(game);
     return (
       <Wrapper>
         <GameInterface stopGame={stopGame} game={game} />

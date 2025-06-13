@@ -9,6 +9,7 @@ import { Answers } from "./answers";
 import { Information } from "./information";
 import { Prompts } from "./prompts";
 import { Story } from "./story";
+import { LinkUser } from "./link-user";
 
 interface GameInterfaceProps {
   stopGame: () => void;
@@ -114,6 +115,8 @@ export function GameInterface({ stopGame, game }: GameInterfaceProps) {
           </div>
         </div>
       </div>
+
+      <LinkUser />
 
       <div className="w-full border-b border-t px-6 py-2">
         <ul className="mx-auto flex w-full max-w-screen-lg flex-wrap items-center justify-between gap-6">

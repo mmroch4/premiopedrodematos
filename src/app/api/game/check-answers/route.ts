@@ -7,6 +7,7 @@ type Body = {
   answers: string[];
   startedAt: string;
   gameId: string;
+  user: string;
 };
 
 const JWT_SECRET = process.env.JWT_SECRET as string;
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Body;
 
-    const { history, answers, gameId, startedAt } = body;
+    const { history, answers, gameId, startedAt, user } = body;
 
     const [story_index_raw, alternatives_index_raw] = history.split(":");
     const story_index = Number(story_index_raw);
@@ -51,11 +52,23 @@ export async function POST(request: Request) {
 
       const record = await xata.db.leaderboard.read(decodedGameId);
 
+      let userName = "";
+
+      if (user) {
+        userName = (
+          jwt.verify(user, JWT_SECRET) as {
+            name: string;
+            password: string;
+          }
+        ).name;
+      }
+
       if (!!record) {
         await xata.db.leaderboard.update(decodedGameId, {
           points: counter,
           submitted_at: String(now),
           period,
+          user,
         });
       } else {
         await xata.db.leaderboard.create(decodedGameId, {
@@ -63,6 +76,7 @@ export async function POST(request: Request) {
           submitted_at: String(now),
           period,
           started_at: decodedStartAt,
+          user: userName || "",
         });
       }
     }

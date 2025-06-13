@@ -5,6 +5,7 @@ type VerifyAnswersParams = {
   answers: string[];
   startedAt: string;
   gameId: string;
+  user: string
 };
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL as string;
@@ -14,6 +15,7 @@ async function verifyAnswers({
   answers,
   gameId,
   startedAt,
+  user
 }: VerifyAnswersParams) {
   const response = await fetch(`${BASE_URL}/api/game/check-answers`, {
     method: "POST",
@@ -24,6 +26,7 @@ async function verifyAnswers({
       answers,
       startedAt,
       gameId,
+      user
     }),
   });
 

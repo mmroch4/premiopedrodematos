@@ -1,11 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import {
   defaultRightAnswers,
   useRightAnswersLocalStorage,
 } from "./use-right-answers-local-storage";
+import { useUserLocalStorage } from "./use-user-local-storage";
 import { useVerifyAnswersMutation } from "./use-verify-answers-mutation";
 
 type FormValues = {
@@ -87,6 +89,8 @@ export function useVerifyAnswersForm({
   const { mutateAsync: verify, data: verification } =
     useVerifyAnswersMutation();
 
+  const { user } = useUserLocalStorage();
+
   const onSubmit = handleSubmit(async (data) => {
     const given_answers = [];
 
@@ -99,19 +103,28 @@ export function useVerifyAnswersForm({
       startedAt,
       gameId,
       answers: given_answers,
+      user,
     });
 
     const answersToPersist: { [key: string]: string | boolean } =
       defaultRightAnswers;
 
+    const rightAnswers = [];
+
     for (let i = 0; i < result.verdict.length; i++) {
       if (result.verdict[i]) {
         answersToPersist[String(i) as keyof typeof answersToPersist] =
           given_answers[i];
+
+        rightAnswers.push(String(i + 1));
       }
     }
 
     setRightAnswers(JSON.stringify(answersToPersist));
+
+    if (rightAnswers.length) {
+      toast.success(`Acertas-te as mensagens: ${rightAnswers.join(" ")}`);
+    }
   });
 
   return { register, onSubmit, verification, formState };

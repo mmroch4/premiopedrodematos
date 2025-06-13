@@ -33,7 +33,7 @@ export function useGame() {
   function stopGame() {
     resetIsPlaying();
     setIsEnabledToFetch(false);
-    queryClient.invalidateQueries({ queryKey: ["GAME"] });
+    queryClient.removeQueries({ queryKey: ["GAME"] });
     resetGame();
     resetRightAnswers();
     resetGameId();

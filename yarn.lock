@@ -1319,6 +1319,11 @@
     "@types/ms" "*"
     "@types/node" "*"
 
+"@types/leo-profanity@^1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@types/leo-profanity/-/leo-profanity-1.5.4.tgz#8f4121a8480f6e37be4a9ad713a69bf437787ff7"
+  integrity sha512-f6PiIeXhT14VM6P06MIuzEG9JpcZ3CgjDbV8Rx5fQPkL1A8Zk3dFQRqFr/x1eQlshRFfBorpuzVnfDC042KY8A==
+
 "@types/ms@*":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-2.1.0.tgz#052aa67a48eccc4309d7f0191b7e41434b90bb78"
@@ -3206,6 +3211,11 @@ fraction.js@^4.3.7:
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
 
+french-badwords-list@^1.0.6:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/french-badwords-list/-/french-badwords-list-1.0.7.tgz#8ed2442cb20fa2781c38b5a75c944f8e91a73c08"
+  integrity sha512-H1ziKs2PJh2+UXZ9oCGJ/rRQpsI9NBykGf2Sc7WaKaj1OnWFuBXfsvANTdRcfVmOghGQaUmRyZ1hJOPbDpy04Q==
+
 fs-constants@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz"
@@ -4074,6 +4084,14 @@ language-tags@^1.0.9:
   integrity sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==
   dependencies:
     language-subtag-registry "^0.3.20"
+
+leo-profanity@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/leo-profanity/-/leo-profanity-1.7.0.tgz#4c7e77a0a1376afdff44a727235d08a489a57d93"
+  integrity sha512-88j1R08jrQzOib9Yxk4nxrzMlrHJi3DzFzAmv0L4APQ+ciGEfJ1rftVEvFjoqL0m+0KGFL3csQGRlxXGnYrA7w==
+  optionalDependencies:
+    french-badwords-list "^1.0.6"
+    russian-bad-words "^0.5.0"
 
 levn@^0.4.1:
   version "0.4.1"
@@ -5594,6 +5612,11 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+russian-bad-words@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/russian-bad-words/-/russian-bad-words-0.5.0.tgz#d4abcdc55f7af37606cdbac44bcb9e0bde6c3855"
+  integrity sha512-euNvEYki6iYYpkNbeudW+lEMMYGEmN7EBwVF8ezlbv0bZoQpVYB7W10cCeUIGV7Ed50sJynLQ0c559q5iI0ejQ==
+
 safe-array-concat@^1.1.3:
   version "1.1.3"
   resolved "https://registry.npmjs.org/safe-array-concat/-/safe-array-concat-1.1.3.tgz"
@@ -5844,6 +5867,11 @@ socks@^2.8.3:
   dependencies:
     ip-address "^9.0.5"
     smart-buffer "^4.2.0"
+
+sonner@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/sonner/-/sonner-2.0.5.tgz#ffb70a6ffe3207c4302cffd3ee46a25242953477"
+  integrity sha512-YwbHQO6cSso3HBXlbCkgrgzDNIhws14r4MO87Ofy+cV2X7ES4pOoAK3+veSmVTvqNx1BWUxlhPmZzP00Crk2aQ==
 
 source-map-js@^1.0.2, source-map-js@^1.2.1:
   version "1.2.1"

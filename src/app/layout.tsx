@@ -2,6 +2,7 @@ import { ubuntu } from "@/fonts/ubuntu";
 import { ReactQueryProvider } from "@/providers/react-query-provider";
 import { cn } from "@/utils/cn";
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import "./globals.css";
 import { metadata as m } from "./metadata";
 
@@ -22,6 +23,7 @@ export default function RootLayout({
           ubuntu.className,
         )}
       >
+        <Toaster position="top-center" duration={8000} />
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

@@ -59,6 +59,13 @@ export default async function RankingPage() {
                   >
                     Tempo decorrido
                   </th>
+
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-700"
+                  >
+                    Utilizador
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
@@ -76,6 +83,9 @@ export default async function RankingPage() {
                       </td>
                       <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
                         {secondsToTimeSpan(Number(p.period))}
+                      </td>
+                      <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
+                        {p.user ? p.user : "😶‍🌫️"}
                       </td>
                     </tr>
                   );

@@ -1,0 +1,24 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d160202cdvp84ne55amg",
+    "operations": [
+      {
+        "add_column": {
+          "table": "leaderboard",
+          "column": {
+            "name": "user",
+            "type": "text",
+            "comment": "",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d160202cdvp84ne55amg",
+  "parent": "mig_d1601fpq1ub51u733h7g",
+  "schema": "public",
+  "startedAt": "2025-06-13T10:44:17.68404Z"
+}

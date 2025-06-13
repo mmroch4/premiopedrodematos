@@ -58,6 +58,74 @@ const tables = [
         comment: "",
       },
       {
+        name: "user",
+        type: "text",
+        notNull: false,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "xata_createdat",
+        type: "datetime",
+        notNull: true,
+        unique: false,
+        defaultValue: "now()",
+        comment: "",
+      },
+      {
+        name: "xata_id",
+        type: "text",
+        notNull: true,
+        unique: true,
+        defaultValue: "('rec_'::text || (xata_private.xid())::text)",
+        comment: "",
+      },
+      {
+        name: "xata_updatedat",
+        type: "datetime",
+        notNull: true,
+        unique: false,
+        defaultValue: "now()",
+        comment: "",
+      },
+      {
+        name: "xata_version",
+        type: "int",
+        notNull: true,
+        unique: false,
+        defaultValue: "0",
+        comment: "",
+      },
+    ],
+  },
+  {
+    name: "users",
+    checkConstraints: {
+      users_xata_id_length_xata_id: {
+        name: "users_xata_id_length_xata_id",
+        columns: ["xata_id"],
+        definition: "CHECK ((length(xata_id) < 256))",
+      },
+    },
+    foreignKeys: {},
+    primaryKey: [],
+    uniqueConstraints: {
+      _pgroll_new_users_xata_id_key: {
+        name: "_pgroll_new_users_xata_id_key",
+        columns: ["xata_id"],
+      },
+    },
+    columns: [
+      {
+        name: "password",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
         name: "xata_createdat",
         type: "datetime",
         notNull: true,
@@ -99,8 +167,12 @@ export type InferredTypes = SchemaInference<SchemaTables>;
 export type Leaderboard = InferredTypes["leaderboard"];
 export type LeaderboardRecord = Leaderboard & XataRecord;
 
+export type Users = InferredTypes["users"];
+export type UsersRecord = Users & XataRecord;
+
 export type DatabaseSchema = {
   leaderboard: LeaderboardRecord;
+  users: UsersRecord;
 };
 
 const DatabaseClient = buildClient();

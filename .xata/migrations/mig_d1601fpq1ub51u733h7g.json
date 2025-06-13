@@ -1,0 +1,24 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_d1601fpq1ub51u733h7g",
+    "operations": [
+      {
+        "add_column": {
+          "up": "''",
+          "table": "users",
+          "column": {
+            "name": "password",
+            "type": "text",
+            "comment": ""
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_d1601fpq1ub51u733h7g",
+  "parent": "mig_d1601ahq1ub51u733h6g",
+  "schema": "public",
+  "startedAt": "2025-06-13T10:43:12.21299Z"
+}
