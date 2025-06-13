@@ -68,7 +68,7 @@ export async function POST(request: Request) {
           points: counter,
           submitted_at: String(now),
           period,
-          user,
+          user: userName || "",
         });
       } else {
         await xata.db.leaderboard.create(decodedGameId, {

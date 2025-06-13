@@ -17,7 +17,8 @@ export function LinkUser() {
 
   const { isSubmitting } = formState;
 
-  const fieldNameError = getFieldState("name").invalid && getFieldState("name").isDirty;
+  const fieldNameError =
+    getFieldState("name").invalid && getFieldState("name").isDirty;
   const fieldPasswordError =
     getFieldState("password").invalid && getFieldState("password").isDirty;
 
@@ -28,9 +29,11 @@ export function LinkUser() {
       </div>
 
       {isAssociated && !isLoading && (
-        <div className="my-2 flex flex-1 items-center justify-start">
-          <CheckIcon className="mr-2 size-4 flex-shrink-0 text-green-500" />
-          <p>Utilizador associado!</p>
+        <div className="mx-auto my-2 flex w-full max-w-screen-lg">
+          <div className="flex flex-1 items-center justify-start">
+            <CheckIcon className="mr-2 size-4 flex-shrink-0 text-green-500" />
+            <p>Utilizador associado!</p>
+          </div>
         </div>
       )}
 
@@ -39,7 +42,7 @@ export function LinkUser() {
           onSubmit={onSubmit}
           className="mx-auto flex w-full max-w-screen-lg flex-wrap items-center justify-between gap-2"
         >
-          <div className="flex flex-wrap items-start gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <div className="flex flex-col gap-2">
               <input
                 type="text"
@@ -61,7 +64,7 @@ export function LinkUser() {
               )}
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div>
               <input
                 placeholder="Palavra-passe"
                 type="text"

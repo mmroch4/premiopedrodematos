@@ -798,7 +798,7 @@ const stories = [
   },
 ];
 
-console.log(stories[23])
+console.log(stories[0])
 
 const PATTERN = {
   0: 1,
